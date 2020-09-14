@@ -40,6 +40,8 @@ public class SceneController : MonoBehaviour {
 					card = Instantiate(originalCard) as MemoryCard;
 				}
 
+				card.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+
 				// next card in the list for each grid space
 				int index = j * gridCols + i;
 				int id = numbers[index];
