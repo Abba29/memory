@@ -3,10 +3,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
+
 	public const int gridRows = 2;
 	public const int gridCols = 4;
 	public const float offsetX = 1.5f;
-	public const float offsetY = 2f;
+	public const float offsetY = 1.8f;
 
 	[SerializeField] private MemoryCard originalCard;
 	[SerializeField] private Sprite[] images;
