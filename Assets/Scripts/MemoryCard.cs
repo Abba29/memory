@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class MemoryCard : MonoBehaviour {
 	[SerializeField] private GameObject cardBack;
@@ -15,8 +16,10 @@ public class MemoryCard : MonoBehaviour {
 		GetComponent<SpriteRenderer>().sprite = image;
 	}
 
-	public void OnMouseDown() {
-		if (cardBack.activeSelf && controller.canReveal) {
+	public void OnMouseDown()
+	{
+		if (cardBack.activeSelf && controller.canReveal)
+		{
 			cardBack.SetActive(false);
 			controller.CardRevealed(this);
 		}
