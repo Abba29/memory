@@ -16,11 +16,15 @@ public class GameController : MonoBehaviour {
 	
 	private MemoryCard _firstRevealed;
 	private MemoryCard _secondRevealed;
+
 	private int _score = 0;
+	private int maxHealth, currentHealth;
+
+	public HealthBar healthBar;
 
 	// Use this for initialization
 	void Start() {
-
+		
 		Vector3 startPos = originalCard.transform.position;
 
 		if (PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
@@ -34,6 +38,9 @@ public class GameController : MonoBehaviour {
         }
 
 		startPos = originalCard.transform.position;
+
+		currentHealth = maxHealth;
+		healthBar.SetMaxHealth(maxHealth);
 
 		// place cards in a grid
 		for (int i = 0; i < gridCols; i++) {
@@ -96,6 +103,15 @@ public class GameController : MonoBehaviour {
 
 			_firstRevealed.Unreveal();
 			_secondRevealed.Unreveal();
+
+			currentHealth -= 1;
+			healthBar.SetHealth(currentHealth);
+
+			if (currentHealth == 0)
+			{
+				Debug.Log("You Lose.");
+				Time.timeScale = 0f;
+			}
 		}
 		
 		_firstRevealed = null;
@@ -109,6 +125,8 @@ public class GameController : MonoBehaviour {
 
 	public void EasyGameInitialization()
     {
+		maxHealth = 3;
+
 		gridRows = 2;
 		gridCols = 4;
 		offsetX = 1.5f;
@@ -121,6 +139,8 @@ public class GameController : MonoBehaviour {
 
 	public void HardGameInitialization()
 	{
+		maxHealth = 5;
+
 		gridRows = 3;
 		gridCols = 4;
 		offsetX = 1.5f;
