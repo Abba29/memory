@@ -1,13 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     // Metodo che da' inizio alla partita (caricando la relativa scena)
-    public void NuovaPartita()
+    public void NuovaPartitaFacile()
     {
+        PlayerPrefs.SetString("LastGameModeSelected", "Easy");
+        SceneManager.LoadScene(1);
+    }
+
+    public void NuovaPartitaDifficile()
+    {
+        PlayerPrefs.SetString("LastGameModeSelected", "Hard");
         SceneManager.LoadScene(1);
     }
 
