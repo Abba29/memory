@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 	
@@ -16,15 +14,14 @@ public class GameController : MonoBehaviour {
 	
 	private MemoryCard _firstRevealed;
 	private MemoryCard _secondRevealed;
-
-	private int _score = 0;
-	private int maxHealth, currentHealth;
+	private int matches = 0;
 
 	public HealthBar healthBar;
+	private int maxHealth, currentHealth;
 
 	// Use this for initialization
 	void Start() {
-		
+
 		Vector3 startPos = originalCard.transform.position;
 
 		if (PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
@@ -91,12 +88,12 @@ public class GameController : MonoBehaviour {
 	
 	private IEnumerator CheckMatch() {
 
-		// increment score if the cards match
+		// increment matches if the cards match
 		if (_firstRevealed.id == _secondRevealed.id) {
-			_score++;
-			scoreLabel.text = "Score: " + _score;
-		}
+			matches++;
 
+			CheckWin(matches);
+		}
 		// otherwise turn them back over after .5s pause
 		else {
 			yield return new WaitForSeconds(.5f);
@@ -109,8 +106,8 @@ public class GameController : MonoBehaviour {
 
 			if (currentHealth == 0)
 			{
+				Timer.instance.EndTimer();
 				Debug.Log("You Lose.");
-				Time.timeScale = 0f;
 			}
 		}
 		
@@ -135,6 +132,8 @@ public class GameController : MonoBehaviour {
 		// create shuffled list of cards
 		numbers = new int[] { 0, 0, 1, 1, 2, 2, 3, 3 };
 		numbers = ShuffleArray(numbers);
+
+		Timer.instance.BeginTimer();
 	}
 
 	public void HardGameInitialization()
@@ -149,5 +148,21 @@ public class GameController : MonoBehaviour {
 		// create shuffled list of cards
 		numbers = new int[] { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 };
 		numbers = ShuffleArray(numbers);
+
+		Timer.instance.BeginTimer();
+	}
+
+	public void CheckWin(int matches)
+	{
+		if (matches == 4 && PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
+		{
+			Timer.instance.EndTimer();
+			Debug.Log("You won!");
+		}
+		else if (matches == 6)
+		{
+			Timer.instance.EndTimer();
+			Debug.Log("You won!");
+		}
 	}
 }
