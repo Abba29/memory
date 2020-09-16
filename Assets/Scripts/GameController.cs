@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
+
+	public static bool gameRunning;
 	
 	private int gridRows, gridCols;
 	private float offsetX, offsetY;
@@ -10,7 +13,7 @@ public class GameController : MonoBehaviour {
 
 	[SerializeField] private MemoryCard originalCard;
 	[SerializeField] private Sprite[] images;
-	[SerializeField] private TextMesh scoreLabel;
+	[SerializeField] private TextMesh timeLabel;
 	
 	private MemoryCard _firstRevealed;
 	private MemoryCard _secondRevealed;
@@ -19,9 +22,13 @@ public class GameController : MonoBehaviour {
 	public HealthBar healthBar;
 	private int maxHealth, currentHealth;
 
+	public GameObject loseMenu, winMenu;
+
 	// Use this for initialization
 	void Start() {
 
+		gameRunning = true;
+		
 		Vector3 startPos = originalCard.transform.position;
 
 		if (PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
@@ -107,7 +114,9 @@ public class GameController : MonoBehaviour {
 			if (currentHealth == 0)
 			{
 				Timer.instance.EndTimer();
-				Debug.Log("You Lose.");
+
+				gameRunning = false;
+				loseMenu.SetActive(true);
 			}
 		}
 		
@@ -157,12 +166,16 @@ public class GameController : MonoBehaviour {
 		if (matches == 4 && PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
 		{
 			Timer.instance.EndTimer();
-			Debug.Log("You won!");
+
+			gameRunning = false;
+			winMenu.SetActive(true);
 		}
 		else if (matches == 6)
 		{
 			Timer.instance.EndTimer();
-			Debug.Log("You won!");
+
+			gameRunning = false;
+			winMenu.SetActive(true);
 		}
 	}
 }
