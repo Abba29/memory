@@ -117,6 +117,9 @@ public class GameController : MonoBehaviour {
 
 				gameRunning = false;
 				loseMenu.SetActive(true);
+
+				PlayerPrefs.SetInt("GamesPlayed", PlayerPrefs.GetInt("GamesPlayed") + 1);
+				Debug.Log("GamesPlayed: " + PlayerPrefs.GetInt("GamesPlayed"));
 			}
 		}
 		
@@ -169,6 +172,12 @@ public class GameController : MonoBehaviour {
 
 			gameRunning = false;
 			winMenu.SetActive(true);
+
+			PlayerPrefs.SetInt("GamesPlayed", PlayerPrefs.GetInt("GamesPlayed") + 1);
+			PlayerPrefs.SetInt("EasyGamesWon", PlayerPrefs.GetInt("EasyGamesWon") + 1);
+
+			Debug.Log("GamesPlayed: " + PlayerPrefs.GetInt("GamesPlayed"));
+			Debug.Log("EasyGamesWon: " + PlayerPrefs.GetInt("EasyGamesWon"));
 		}
 		else if (matches == 6)
 		{
@@ -176,6 +185,12 @@ public class GameController : MonoBehaviour {
 
 			gameRunning = false;
 			winMenu.SetActive(true);
+
+			PlayerPrefs.SetInt("GamesPlayed", PlayerPrefs.GetInt("GamesPlayed") + 1);
+			PlayerPrefs.SetInt("HardGamesWon", PlayerPrefs.GetInt("HardGamesWon") + 1);
+
+			Debug.Log("GamesPlayed: " + PlayerPrefs.GetInt("GamesPlayed"));
+			Debug.Log("HardGamesWon: " + PlayerPrefs.GetInt("HardGamesWon"));
 		}
 	}
 }
