@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 1055688372}
   m_Layer: 0
   m_Name: MemoryCard
-  m_TagString: Untagged
+  m_TagString: MemoryCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2006,7 +2006,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4007c522676129a4dac86ca149576695, type: 3}
   - {fileID: 21300000, guid: 04a9dc19fedf7744b8dfdd0e2df51a9f, type: 3}
   - {fileID: 21300000, guid: fd5dbab607205d347a85aa2b1c58d796, type: 3}
-  timeLabel: {fileID: 0}
+  - {fileID: 21300000, guid: f24e3915a0fd08944a702fa7d79a37a7, type: 3}
+  - {fileID: 21300000, guid: 7c7669813f9657f4db36f9c31d01eb23, type: 3}
+  timeLabel: {fileID: 1161238676}
   healthBar: {fileID: 899951997}
   loseMenu: {fileID: 1793431093}
   winMenu: {fileID: 679606488}
@@ -2557,7 +2559,7 @@ GameObject:
   - component: {fileID: 2065343968}
   m_Layer: 0
   m_Name: card_back
-  m_TagString: Untagged
+  m_TagString: CardBack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

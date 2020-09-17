@@ -29,8 +29,9 @@ public class Timer : MonoBehaviour
             timeElapsed += Time.deltaTime;
             string timePlayingStr = "Tempo: " + timeElapsed.ToString("00.0").Replace(",", ".") + " s";
             textBox.text = timePlayingStr;
+
+            //Debug.Log("Time: " + timePlayingStr);
         }
-        else CheckBestTime();
     }
 
     public void BeginTimer()
@@ -51,6 +52,8 @@ public class Timer : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("EasyBestTime", timeElapsed);
             }
+
+            //Debug.Log("EasyBestTime " + PlayerPrefs.GetFloat("EasyBestTime"));
         }
         else
         {
@@ -58,6 +61,8 @@ public class Timer : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("HardBestTime", timeElapsed);
             }
+
+            //Debug.Log("HardBestTime " + PlayerPrefs.GetFloat("HardBestTime"));
         }
     }
 }

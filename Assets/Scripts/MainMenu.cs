@@ -27,6 +27,12 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat("EasyBestTime", 1000f);
         PlayerPrefs.SetFloat("HardBestTime", 1000f);
 
+        //Debug.Log("GamesPlayed " + PlayerPrefs.GetInt("GamesPlayed"));
+        //Debug.Log("EasyGamesWon " + PlayerPrefs.GetInt("EasyGamesWon"));
+        //Debug.Log("HardGamesWon " + PlayerPrefs.GetInt("HardGamesWon"));
+        //Debug.Log("EasyBestTime " + PlayerPrefs.GetInt("EasyBestTime"));
+        //Debug.Log("HardBestTime " + PlayerPrefs.GetInt("HardBestTime"));
+
         StampaStatistiche();
     }
 
@@ -36,7 +42,6 @@ public class MainMenu : MonoBehaviour
         easyGamesWon.text = "Partite Vinte (Facile): " + PlayerPrefs.GetInt("EasyGamesWon");
         hardGamesWon.text = "Partite Vinte (Difficile): " + PlayerPrefs.GetInt("HardGamesWon");
         
-        // da cambiare per accettare float
         easyBestTime.text = "Miglior Tempo (Facile): " + PlayerPrefs.GetFloat("EasyBestTime").ToString("0.0").Replace(",", ".") + " s";
         hardBestTime.text = "Miglior Tempo (Difficile): " + PlayerPrefs.GetFloat("HardBestTime").ToString("0.0").Replace(",", ".") + " s";
     }

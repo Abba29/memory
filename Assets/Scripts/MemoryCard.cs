@@ -3,10 +3,12 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 public class MemoryCard : MonoBehaviour {
+	
 	[SerializeField] private GameObject cardBack;
 	[SerializeField] private GameController controller;
 
 	private int _id;
+
 	public int id {
 		get {return _id;}
 	}

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Canvas
+  - MemoryCard
+  - CardBack
   layers:
   - Default
   - TransparentFX
