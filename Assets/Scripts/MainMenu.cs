@@ -6,20 +6,20 @@ public class MainMenu : MonoBehaviour
 {
     public Text gamesPlayed, easyGamesWon, hardGamesWon, easyBestTime, hardBestTime;
     
-    // Metodo che da' inizio alla partita (caricando la relativa scena)
-    public void NuovaPartitaFacile()
+    public void NewEasyGame()
     {
         PlayerPrefs.SetString("LastGameModeSelected", "Easy");
         SceneManager.LoadScene(1);
     }
 
-    public void NuovaPartitaDifficile()
+    public void NewHardGame()
     {
         PlayerPrefs.SetString("LastGameModeSelected", "Hard");
         SceneManager.LoadScene(1);
     }
 
-    public void AzzeraStatistiche()
+    // Reset the values shown in the 'Statistiche' game screen
+    public void ResetStats()
     {
         PlayerPrefs.SetInt("GamesPlayed", 0);
         PlayerPrefs.SetInt("EasyGamesWon", 0);
@@ -33,10 +33,11 @@ public class MainMenu : MonoBehaviour
         //Debug.Log("EasyBestTime " + PlayerPrefs.GetInt("EasyBestTime"));
         //Debug.Log("HardBestTime " + PlayerPrefs.GetInt("HardBestTime"));
 
-        StampaStatistiche();
+        PrintStats();
     }
 
-    public void StampaStatistiche()
+    // Print the values shown in the 'Statistiche' game screen
+    public void PrintStats()
     {
         gamesPlayed.text = "Partite Giocate: " + PlayerPrefs.GetInt("GamesPlayed");
         easyGamesWon.text = "Partite Vinte (Facile): " + PlayerPrefs.GetInt("EasyGamesWon");
@@ -46,8 +47,7 @@ public class MainMenu : MonoBehaviour
         hardBestTime.text = "Miglior Tempo (Difficile): " + PlayerPrefs.GetFloat("HardBestTime").ToString("0.0").Replace(",", ".") + " s";
     }
     
-    // Metodo che consente di uscire dal gioco
-    public void Esci()
+    public void QuitGame()
     {
         Application.Quit();
     }

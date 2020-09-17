@@ -343,7 +343,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1369294546}
-        m_MethodName: NuovaPartitaDifficile
+        m_MethodName: NewHardGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -472,7 +472,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1369294546}
-        m_MethodName: AzzeraStatistiche
+        m_MethodName: ResetStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -612,7 +612,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1369294546}
-        m_MethodName: NuovaPartitaFacile
+        m_MethodName: NewEasyGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1324,7 +1324,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1369294546}
-        m_MethodName: Esci
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1782,7 +1782,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1369294546}
-        m_MethodName: StampaStatistiche
+        m_MethodName: PrintStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

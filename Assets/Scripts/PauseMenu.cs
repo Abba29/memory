@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Enable/disable pause menu only when 'ESC' key is pressed and the game is still running
         if (Input.GetKeyDown(KeyCode.Escape) && GameController.gameRunning)
         {
             if (GameIsPaused)
