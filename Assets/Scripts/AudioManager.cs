@@ -8,7 +8,9 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    public float previousVolume;
+    private float previousVolume ;
+    private double volume = 0.50; 
+    
     
     public void Awake()
     {
@@ -35,7 +37,8 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        Play("Theme");
+        Play("theme");
+
     }
     
     public void Play(string name)
@@ -66,6 +69,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void Unmute(string name)
+
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
@@ -74,7 +78,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-
-        s.source.volume = previousVolume;
+       
+        s.source.volume = (float)volume;
     }
+
 }
