@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MuteButton : MonoBehaviour
 {
-
-    private bool unmute = false; 
+    //Variabile che serve per capire se il giocatore vuole o meno la musica
+    public bool muted = false; 
+ 
     // Start is called before the first frame update
     void Start()
     {
-        
+        muted = false; 
     }
 
     // Update is called once per frame
@@ -17,6 +18,7 @@ public class MuteButton : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Unmute("theme");
     }
+
 
 
 }

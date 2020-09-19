@@ -20,23 +20,28 @@ public class GameController : MonoBehaviour {
 	private int matches = 0;
 
 	public TextMesh timeLabel;
-	
+
+
 	public HealthBar healthBar;
 	private int maxHealth, currentHealth;
 
 	public GameObject loseMenu, winMenu;
+	public MuteButton mute; 
 
 	void Start() {
 
+		
 		gameRunning = true;
 
-		// Position of the time label, the health bar and the first card
+
+	// Position of the time label, the health bar and the first card
 		Vector3 timeLabelStartPos = timeLabel.transform.localPosition;
 		Vector3 healthBarStartPos = healthBar.transform.localPosition;
 		Vector3 cardStartPos = originalCard.transform.localPosition;
 
 		if (PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
 		{
+
 			EasyGameInitialization();
         } 
 		else
@@ -102,12 +107,17 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	/*
+	private void Update()
+	{
+			FindObjectOfType<AudioManager>().Unmute("theme");      
+	}
+
+    /*
 	 * GAME LOGIC FUNCTIONS
 	 */
 
-	// Getter function that returns false if there's already a second card revealed
-	public bool canReveal
+    // Getter function that returns false if there's already a second card revealed
+    public bool canReveal
 	{
 		get { return _secondRevealed == null; }
 	}
@@ -161,7 +171,6 @@ public class GameController : MonoBehaviour {
 
 				PlayerPrefs.SetInt("GamesPlayed", PlayerPrefs.GetInt("GamesPlayed") + 1);
 				
-				//Debug.Log("GamesPlayed: " + PlayerPrefs.GetInt("GamesPlayed"));
 			}
 		}
 		
@@ -186,8 +195,6 @@ public class GameController : MonoBehaviour {
 			PlayerPrefs.SetInt("GamesPlayed", PlayerPrefs.GetInt("GamesPlayed") + 1);
 			PlayerPrefs.SetInt("EasyGamesWon", PlayerPrefs.GetInt("EasyGamesWon") + 1);
 
-			//Debug.Log("GamesPlayed: " + PlayerPrefs.GetInt("GamesPlayed"));
-			//Debug.Log("EasyGamesWon: " + PlayerPrefs.GetInt("EasyGamesWon"));
 		}
 		else if (matches == 8)
 		{
@@ -201,8 +208,6 @@ public class GameController : MonoBehaviour {
 			PlayerPrefs.SetInt("GamesPlayed", PlayerPrefs.GetInt("GamesPlayed") + 1);
 			PlayerPrefs.SetInt("HardGamesWon", PlayerPrefs.GetInt("HardGamesWon") + 1);
 
-			//Debug.Log("GamesPlayed: " + PlayerPrefs.GetInt("GamesPlayed"));
-			//Debug.Log("HardGamesWon: " + PlayerPrefs.GetInt("HardGamesWon"));
 		}
 	}
 
@@ -214,6 +219,7 @@ public class GameController : MonoBehaviour {
 	public void EasyGameInitialization()
     {
 		maxHealth = 3;
+		
 
 		// Values for how many grid spaces and how far apart to place them
 		gridRows = 2;
@@ -224,6 +230,7 @@ public class GameController : MonoBehaviour {
 		// Create shuffled list of cards
 		numbers = new int[] { 0, 0, 1, 1, 2, 2, 3, 3 };
 		numbers = ShuffleArray(numbers);
+
 	}
 
 	public void HardGameInitialization()

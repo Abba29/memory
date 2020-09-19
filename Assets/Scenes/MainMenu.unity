@@ -935,7 +935,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &586323662
 GameObject:
@@ -2184,6 +2184,7 @@ GameObject:
   - component: {fileID: 1418558209}
   - component: {fileID: 1418558208}
   - component: {fileID: 1418558207}
+  - component: {fileID: 1418558211}
   m_Layer: 5
   m_Name: SpeakerButton
   m_TagString: Untagged
@@ -2312,6 +2313,18 @@ RectTransform:
   m_AnchoredPosition: {x: 334.55, y: -214.1}
   m_SizeDelta: {x: 45.178574, y: 49.53943}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1418558211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418558206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b9e657678406f48ab3db2a3950b020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1655707175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,5 +2559,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
