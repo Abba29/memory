@@ -9,7 +9,9 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private float previousVolume ;
-    private double volume = 0.50; 
+    private double volume = 0.50;
+    private bool muted = false; 
+
     
     
     public void Awake()
@@ -40,7 +42,19 @@ public class AudioManager : MonoBehaviour
         Play("theme");
 
     }
-    
+
+    public void Update()
+    {
+        if (muted)
+        {
+            Mute("theme");
+        }
+        else
+        {
+            Unmute("theme"); 
+        }
+    }
+
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -80,6 +94,18 @@ public class AudioManager : MonoBehaviour
         }
        
         s.source.volume = (float)volume;
+    }
+
+    public void setmuded (bool x)
+    {
+        bool y = x;
+        this.muted = y; 
+    }
+
+    public bool getMuted()
+    {
+        bool x = this.muted;
+        return x; 
     }
 
 }

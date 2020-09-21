@@ -52,6 +52,14 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        if (FindObjectOfType<AudioManager>().getMuted())
+        {
+            FindObjectOfType<AudioManager>().Mute("theme");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Unmute("theme");
+        }
         SceneManager.LoadScene(0);
     }
 }

@@ -109,7 +109,14 @@ public class GameController : MonoBehaviour {
 
 	private void Update()
 	{
-			FindObjectOfType<AudioManager>().Unmute("theme");      
+		if (FindObjectOfType<AudioManager>().getMuted())
+		{
+			FindObjectOfType<AudioManager>().Mute("theme");
+		}
+		else
+		{
+			FindObjectOfType<AudioManager>().Unmute("theme");
+		}
 	}
 
     /*
