@@ -3,7 +3,7 @@
 public class MemoryCard : MonoBehaviour {
 	
 	[SerializeField] private GameObject cardBack;
-	[SerializeField] private GameController controller;
+	[SerializeField] private GameManager controller;
 
 	private int _id;
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameController : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
 	public static bool gameRunning; // Variable used to avoid being able to pause the game when finished (lose/won)
 	
