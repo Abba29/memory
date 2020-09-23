@@ -7,6 +7,8 @@ TagManager:
   - Canvas
   - MemoryCard
   - CardBack
+  - SpeakerButton
+  - MuteButton
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Text gamesPlayed, easyGamesWon, hardGamesWon, easyBestTime, hardBestTime;
-    
+
     public void NewEasyGame()
     {
         PlayerPrefs.SetString("LastGameModeSelected", "Easy");

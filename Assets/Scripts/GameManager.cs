@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour {
 	private int maxHealth, currentHealth;
 
 	public GameObject loseMenu, winMenu;
-	public MuteButton mute; 
 
 	void Start() {
 
@@ -104,19 +103,6 @@ public class GameManager : MonoBehaviour {
 
 		// Cover all cards after 2s and starts the timer
 		Invoke("coverAllCards", 2.0f);
-	}
-
-
-	private void Update()
-	{
-		if (FindObjectOfType<AudioManager>().getMuted())
-		{
-			FindObjectOfType<AudioManager>().Mute("theme");
-		}
-		else
-		{
-			FindObjectOfType<AudioManager>().Unmute("theme");
-		}
 	}
 
     /*
