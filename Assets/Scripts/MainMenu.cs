@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Text gamesPlayed, easyGamesWon, hardGamesWon, easyBestTime, hardBestTime;
+    [SerializeField] private Text gamesPlayed, easyGamesWon, hardGamesWon, easyBestTime, hardBestTime;
 
     public void NewEasyGame()
     {
@@ -18,24 +18,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    // Reset the values shown in the 'Statistiche' game screen
-    public void ResetStats()
-    {
-        PlayerPrefs.SetInt("GamesPlayed", 0);
-        PlayerPrefs.SetInt("EasyGamesWon", 0);
-        PlayerPrefs.SetInt("HardGamesWon", 0);
-        PlayerPrefs.SetFloat("EasyBestTime", 1000f);
-        PlayerPrefs.SetFloat("HardBestTime", 1000f);
-
-        //Debug.Log("GamesPlayed " + PlayerPrefs.GetInt("GamesPlayed"));
-        //Debug.Log("EasyGamesWon " + PlayerPrefs.GetInt("EasyGamesWon"));
-        //Debug.Log("HardGamesWon " + PlayerPrefs.GetInt("HardGamesWon"));
-        //Debug.Log("EasyBestTime " + PlayerPrefs.GetInt("EasyBestTime"));
-        //Debug.Log("HardBestTime " + PlayerPrefs.GetInt("HardBestTime"));
-
-        PrintStats();
-    }
-
     // Print the values shown in the 'Statistiche' game screen
     public void PrintStats()
     {
@@ -46,7 +28,19 @@ public class MainMenu : MonoBehaviour
         easyBestTime.text = "Miglior Tempo (Facile): " + PlayerPrefs.GetFloat("EasyBestTime").ToString("0.0").Replace(",", ".") + " s";
         hardBestTime.text = "Miglior Tempo (Difficile): " + PlayerPrefs.GetFloat("HardBestTime").ToString("0.0").Replace(",", ".") + " s";
     }
-    
+
+    // Reset the values shown in the 'Statistiche' game screen
+    public void ResetStats()
+    {
+        PlayerPrefs.SetInt("GamesPlayed", 0);
+        PlayerPrefs.SetInt("EasyGamesWon", 0);
+        PlayerPrefs.SetInt("HardGamesWon", 0);
+        PlayerPrefs.SetFloat("EasyBestTime", 1000f);
+        PlayerPrefs.SetFloat("HardBestTime", 1000f);
+
+        PrintStats();
+    }
+
     public void QuitGame()
     {
         Application.Quit();

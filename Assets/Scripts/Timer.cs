@@ -4,16 +4,16 @@ public class Timer : MonoBehaviour
 {
     public static Timer instance;
 
-    // Use Awake to initialize variables or states before the application starts
+    // Awake is used to initialize variables or states before the application starts
     private void Awake()
     {
         instance = this;
     }
 
-    public float timeElapsed = 0f;
-    public TextMesh textBox;
-
-    bool timerGoing = false;
+    [SerializeField] private TextMesh textBox;
+   
+    private bool timerGoing = false;
+    private float timeElapsed = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +29,6 @@ public class Timer : MonoBehaviour
             timeElapsed += Time.deltaTime;
             string timePlayingStr = "Tempo: " + timeElapsed.ToString("00.0").Replace(",", ".") + " s";
             textBox.text = timePlayingStr;
-
-            //Debug.Log("Time: " + timePlayingStr);
         }
     }
 
@@ -52,8 +50,6 @@ public class Timer : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("EasyBestTime", timeElapsed);
             }
-
-            //Debug.Log("EasyBestTime " + PlayerPrefs.GetFloat("EasyBestTime"));
         }
         else
         {
@@ -61,8 +57,6 @@ public class Timer : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("HardBestTime", timeElapsed);
             }
-
-            //Debug.Log("HardBestTime " + PlayerPrefs.GetFloat("HardBestTime"));
         }
     }
 }

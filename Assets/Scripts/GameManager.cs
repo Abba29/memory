@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour 
+{
 	public static bool gameRunning; // Variable used to avoid being able to pause the game when finished (lose/won)
 	
 	private int gridRows, gridCols;
@@ -10,33 +10,26 @@ public class GameManager : MonoBehaviour {
 
 	private int[] numbers;
 
-	[SerializeField] private MemoryCard originalCard; // Reference for the first card in the scene
+	[SerializeField] private Card originalCard; // Reference for the first card in the scene
 	[SerializeField] private Sprite[] images; // Array for references to the sprite assets
 	
 	private GameObject[] cardsBack;
 
-	private MemoryCard _firstRevealed;
-	private MemoryCard _secondRevealed;
+	private Card _firstRevealed;
+	private Card _secondRevealed;
 	private int matches = 0;
 
-	public TextMesh timeLabel;
+	[SerializeField] private TextMesh timeLabel;
 
-
-	public HealthBar healthBar;
+	[SerializeField] private HealthBar healthBar;
 	private int maxHealth, currentHealth;
 
-	public GameObject loseMenu, winMenu;
+	[SerializeField] private GameObject loseMenu, winMenu;
 
-	void Start() {
+	void Start() 
+	{
 
-		
 		gameRunning = true;
-
-
-	// Position of the time label, the health bar and the first card
-		Vector3 timeLabelStartPos = timeLabel.transform.localPosition;
-		Vector3 healthBarStartPos = healthBar.transform.localPosition;
-		Vector3 cardStartPos = originalCard.transform.localPosition;
 
 		if (PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
 		{
@@ -46,51 +39,14 @@ public class GameManager : MonoBehaviour {
 		else
         {
 			HardGameInitialization();
-
-			// Adjust the time label and health bar's positions
-			timeLabel.transform.localPosition = new Vector3(timeLabelStartPos.x, timeLabelStartPos.y + 15f, timeLabelStartPos.z);
-			healthBar.transform.localPosition = new Vector3(healthBarStartPos.x, healthBarStartPos.y + 15f, healthBarStartPos.z);
-
-			// Scale the first card and adjust its position to make the spawned cards fit the screen
-			originalCard.transform.localScale = new Vector3(60, 60, originalCard.transform.localScale.z);
-			originalCard.transform.localPosition = new Vector3(cardStartPos.x + 50f, healthBarStartPos.y - 90f, healthBarStartPos.z);
 		}
-
+		
 		// Set the health to its maximum
 		currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
 
-		// Updated position of the first card
-		cardStartPos = originalCard.transform.position;
-
-		// Place the cards in the predefined grid
-		for (int i = 0; i < gridCols; i++) {
-			for (int j = 0; j < gridRows; j++) {
-				
-				MemoryCard card; // Container reference fro either the original card or the copies
-
-				// Original card for the first grid space
-				if (i == 0 && j == 0) {
-					card = originalCard;
-				} 
-				else 
-				{
-					card = Instantiate(originalCard) as MemoryCard;
-				}
-
-				// Set the spawned cards as children of the main canvas
-				card.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
-
-				// Next card in the list for each grid space
-				int index = j * gridCols + i;
-				int id = numbers[index];
-				card.SetCard(id, images[id]);
-
-				float posX = (offsetX * i) + cardStartPos.x;
-				float posY = -(offsetY * j) + cardStartPos.y;
-				card.transform.position = new Vector3(posX, posY, cardStartPos.z);
-			}
-		}
+		// Create the grid of cards
+		CardOrganizer.DisplayCards(originalCard, healthBar, timeLabel, gridRows, gridCols, offsetX, offsetY, numbers, images);
 
 		// Array for references to the cards' backs
 		cardsBack = GameObject.FindGameObjectsWithTag("CardBack");
@@ -102,7 +58,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// Cover all cards after 2s and starts the timer
-		Invoke("coverAllCards", 2.0f);
+		Invoke("CoverAllCards", 2.0f);
 	}
 
     /*
@@ -110,14 +66,16 @@ public class GameManager : MonoBehaviour {
 	 */
 
     // Getter function that returns false if there's already a second card revealed
-    public bool canReveal
+    public bool CanReveal
 	{
 		get { return _secondRevealed == null; }
 	}
 	
 	// Store card objects in one of the two card variables dependending on if the first variable is already occupied
-	public void CardRevealed(MemoryCard card) {
-		if (_firstRevealed == null) {
+	public void CardRevealed(Card card) 
+	{
+		if (_firstRevealed == null) 
+		{
 			_firstRevealed = card;
 		} 
 		else 
@@ -129,10 +87,12 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 	
-	private IEnumerator CheckMatch() {
+	private IEnumerator CheckMatch() 
+	{
 
 		// Compare the IDs of the two reveal card, incrementing 'matches' if they match
-		if (_firstRevealed.id == _secondRevealed.id) {
+		if (_firstRevealed.id == _secondRevealed.id) 
+		{
 
 			yield return new WaitForSeconds(0.5f);
 
@@ -241,8 +201,8 @@ public class GameManager : MonoBehaviour {
 		numbers = ShuffleArray(numbers);
 	}
 
-	// Function created just to be called by the 'Invoke' method 
-	public void coverAllCards()
+	// Function called in the 'Invoke' method to be executed after a predefined amount of time
+	public void CoverAllCards()
 	{
 		foreach (GameObject c in cardsBack)
 		{

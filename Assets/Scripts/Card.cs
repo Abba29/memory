@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class MemoryCard : MonoBehaviour {
+public class Card : MonoBehaviour 
+{
 	
 	[SerializeField] private GameObject cardBack;
 	[SerializeField] private GameManager controller;
@@ -8,12 +9,14 @@ public class MemoryCard : MonoBehaviour {
 	private int _id;
 
 	// Getter function for the object's _id
-	public int id {
-		get {return _id;}
+	public int id 
+	{
+		get { return _id; }
 	}
 
 	// Function used by other scripts to pass new sprites to this object
-	public void SetCard(int id, Sprite image) {
+	public void SetCard(int id, Sprite image) 
+	{
 		_id = id;
 		GetComponent<SpriteRenderer>().sprite = image;
 	}
@@ -22,7 +25,7 @@ public class MemoryCard : MonoBehaviour {
 	public void OnMouseDown()
 	{
 		// Check the GameController's canReveal property to make sure only two cards are revealed at the same time
-		if (cardBack.activeSelf && controller.canReveal)
+		if (cardBack.activeSelf && controller.CanReveal)
 		{
 			cardBack.SetActive(false);
 			controller.CardRevealed(this); // Notify the controller when the card is revealed
@@ -30,7 +33,8 @@ public class MemoryCard : MonoBehaviour {
 	}
 
 	// Public method so that GameController can hide the card again
-	public void Unreveal() {
+	public void Unreveal() 
+	{
 		cardBack.SetActive(true);
 	}
 }

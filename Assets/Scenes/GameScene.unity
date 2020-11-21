@@ -2044,7 +2044,7 @@ GameObject:
   - component: {fileID: 1815890016}
   - component: {fileID: 1815890019}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2076,7 +2076,6 @@ MonoBehaviour:
   healthBar: {fileID: 899951997}
   loseMenu: {fileID: 1793431093}
   winMenu: {fileID: 679606488}
-  mute: {fileID: 0}
 --- !u!4 &1815890017
 Transform:
   m_ObjectHideFlags: 0
@@ -2103,7 +2102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f44c0fe92e20540992f27e4770736a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeElapsed: 0
   textBox: {fileID: 1161238676}
 --- !u!1 &1890489761
 GameObject:
