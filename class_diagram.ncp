@@ -1,0 +1,155 @@
+<Project>
+  <Name>memory</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Class Diagram</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Card</Name>
+        <Access>Public</Access>
+        <Location left="110" top="582" />
+        <Size width="206" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameObject cardBack</Member>
+        <Member type="Field">GameManager controller</Member>
+        <Member type="Field">int _id</Member>
+        <Member type="Method">public int id()</Member>
+        <Member type="Method">public void SetCard(int id, Sprite image)</Member>
+        <Member type="Method">public void OnMouseDown()</Member>
+        <Member type="Method">public void Unreveal()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CardOrganizer</Name>
+        <Access>Public</Access>
+        <Location left="368" top="670" />
+        <Size width="870" height="101" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void DisplayCards(Card originalCard, HealthBar healthBar, TextMesh timeLabel, int gridRows, int gridCols, float offsetX, float offsetY, int[] numbers, Sprite[] images)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MainMenu</Name>
+        <Access>Public</Access>
+        <Location left="110" top="60" />
+        <Size width="162" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Text gamesPlayed</Member>
+        <Member type="Field">private Text easyGamesWon</Member>
+        <Member type="Field">private Text hardGamesWon</Member>
+        <Member type="Field">private text easyBestTime</Member>
+        <Member type="Field">private Text hardBestTime</Member>
+        <Member type="Method">private void NewEasyGame()</Member>
+        <Member type="Method">private void NewHardGame()</Member>
+        <Member type="Method">private void PrintStats()</Member>
+        <Member type="Method">private void ResetStats()</Member>
+        <Member type="Method">private void QuitGame()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PauseMenu</Name>
+        <Access>Public</Access>
+        <Location left="110" top="343" />
+        <Size width="163" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private bool GameIsPaused</Member>
+        <Member type="Field">private GameObject pauseMenuUI</Member>
+        <Member type="Method">public void Update()</Member>
+        <Member type="Method">private void Resume()</Member>
+        <Member type="Method">private void Pause()</Member>
+        <Member type="Method">private void Restart()</Member>
+        <Member type="Method">private void LoadMenu()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Sound</Name>
+        <Access>Public</Access>
+        <Location left="1071" top="385" />
+        <Size width="163" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public AudioSource source</Member>
+        <Member type="Field">private string name</Member>
+        <Member type="Field">private AudioClip clip</Member>
+        <Member type="Field">private float volume</Member>
+        <Member type="Field">private float pitch</Member>
+        <Member type="Field">private bool loop</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SoundManger</Name>
+        <Access>Public</Access>
+        <Location left="1071" top="135" />
+        <Size width="163" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Sound[] sounds</Member>
+        <Member type="Field">private static SoundManager instance</Member>
+        <Member type="Method">public void Awake()</Member>
+        <Member type="Method">public void Start()</Member>
+        <Member type="Method">private void Play(string name)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Timer</Name>
+        <Access>Public</Access>
+        <Location left="759" top="135" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public static Timer instance</Member>
+        <Member type="Method">public void Awake()</Member>
+        <Member type="Method">public void Start()</Member>
+        <Member type="Method">public void Update()</Member>
+        <Member type="Method">public void BeginTimer()</Member>
+        <Member type="Method">public void EndTimer()</Member>
+        <Member type="Method">public void CheckBestTime()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameManager</Name>
+        <Access>Public</Access>
+        <Location left="448" top="60" />
+        <Size width="198" height="536" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public static bool gameRunning</Member>
+        <Member type="Field">private int gridRows</Member>
+        <Member type="Field">private int gridCols</Member>
+        <Member type="Field">private float offsetX</Member>
+        <Member type="Field">private float offsetY</Member>
+        <Member type="Field">private int[] numbers</Member>
+        <Member type="Field">private Card originalCard</Member>
+        <Member type="Field">private Sprite[] images</Member>
+        <Member type="Field">private GameObject[] cardsBack</Member>
+        <Member type="Field">private Card _firstRevealed</Member>
+        <Member type="Field">private Card _secondRevealed</Member>
+        <Member type="Field">private int matches</Member>
+        <Member type="Field">private TextMesh timeLabel</Member>
+        <Member type="Field">private HealtBar healthBar</Member>
+        <Member type="Field">private int maxHealth</Member>
+        <Member type="Field">private int currentHealth</Member>
+        <Member type="Field">private GameObject loseMenu</Member>
+        <Member type="Field">private GameObject winMenu</Member>
+        <Member type="Method">public void Start()</Member>
+        <Member type="Method">public bool CanReveal()</Member>
+        <Member type="Method">public void CardRevealed(Card card)</Member>
+        <Member type="Method">private IEnumeratore CheckMatch()</Member>
+        <Member type="Method">private void CheckWin(int matches)</Member>
+        <Member type="Method">private void EasyGameInitialization()</Member>
+        <Member type="Method">private void HardGameInitialization()</Member>
+        <Member type="Method">private void CoverAllCards()</Member>
+        <Member type="Method">private int[] ShuffleArray(int[] numbers)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>HealthBar</Name>
+        <Access>Public</Access>
+        <Location left="746" top="420" />
+        <Size width="184" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Slider slider</Member>
+        <Member type="Method">public void SetMaxHealth(int health)</Member>
+        <Member type="Method">public void SetHealth(int health)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+</Project>

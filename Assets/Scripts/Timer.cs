@@ -5,7 +5,7 @@ public class Timer : MonoBehaviour
     public static Timer instance;
 
     // Awake is used to initialize variables or states before the application starts
-    private void Awake()
+    public void Awake()
     {
         instance = this;
     }

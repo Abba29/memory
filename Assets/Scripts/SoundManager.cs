@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
         Play("Theme");
     }
 
-    public void Play(string name)
+    private void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.Name == name);
 

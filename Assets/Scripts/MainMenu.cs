@@ -6,20 +6,20 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Text gamesPlayed, easyGamesWon, hardGamesWon, easyBestTime, hardBestTime;
 
-    public void NewEasyGame()
+    private void NewEasyGame()
     {
         PlayerPrefs.SetString("LastGameModeSelected", "Easy");
         SceneManager.LoadScene(1);
     }
 
-    public void NewHardGame()
+    private void NewHardGame()
     {
         PlayerPrefs.SetString("LastGameModeSelected", "Hard");
         SceneManager.LoadScene(1);
     }
 
     // Print the values shown in the 'Statistiche' game screen
-    public void PrintStats()
+    private void PrintStats()
     {
         gamesPlayed.text = "Partite Giocate: " + PlayerPrefs.GetInt("GamesPlayed");
         easyGamesWon.text = "Partite Vinte (Facile): " + PlayerPrefs.GetInt("EasyGamesWon");
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
     }
 
     // Reset the values shown in the 'Statistiche' game screen
-    public void ResetStats()
+    private void ResetStats()
     {
         PlayerPrefs.SetInt("GamesPlayed", 0);
         PlayerPrefs.SetInt("EasyGamesWon", 0);

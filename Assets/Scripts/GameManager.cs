@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 		CheckWin(matches);
 	}
 
-	public void CheckWin(int matches)
+	private void CheckWin(int matches)
 	{
 		if (matches == 4 && PlayerPrefs.GetString("LastGameModeSelected") == "Easy")
 		{
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
 	 * GAME INIZIALIZATION FUNCTIONS
 	 */
 
-	public void EasyGameInitialization()
+	private void EasyGameInitialization()
     {
 		maxHealth = 3;
 		
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
 
 	}
 
-	public void HardGameInitialization()
+	private void HardGameInitialization()
 	{
 		maxHealth = 5;
 
@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	// Function called in the 'Invoke' method to be executed after a predefined amount of time
-	public void CoverAllCards()
+	private void CoverAllCards()
 	{
 		foreach (GameObject c in cardsBack)
 		{
