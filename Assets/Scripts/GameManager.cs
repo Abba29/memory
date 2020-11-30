@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
 			_secondRevealed.gameObject.SetActive(false);
 
 			matches++;
+			CheckWin(matches);
 		}
 		else 
 		{
@@ -130,8 +131,6 @@ public class GameManager : MonoBehaviour
 		// Clear out the variables whether or not a match was made
 		_firstRevealed = null;
 		_secondRevealed = null;
-
-		CheckWin(matches);
 	}
 
 	private void CheckWin(int matches)
