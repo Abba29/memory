@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         // Enable/disable pause menu only when 'ESC' key is pressed and the game is still running
-        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.gameRunning)
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.gameRunning)
         {
             if (GameIsPaused)
             {
@@ -41,12 +41,12 @@ public class PauseMenu : MonoBehaviour
     private void Restart()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     private void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

@@ -12,12 +12,12 @@ public class CardOrganizer : MonoBehaviour
 		if (PlayerPrefs.GetString("LastGameModeSelected") == "Hard")
         {
             // Adjust the time label and health bar's positions
-            timeLabel.transform.localPosition = new Vector3(timeLabelStartPos.x, timeLabelStartPos.y + 15f, timeLabelStartPos.z);
-            healthBar.transform.localPosition = new Vector3(healthBarStartPos.x, healthBarStartPos.y + 15f, healthBarStartPos.z);
+            timeLabel.transform.localPosition = new Vector3(timeLabelStartPos.x, timeLabelStartPos.y + 100f, timeLabelStartPos.z);
+            healthBar.transform.localPosition = new Vector3(healthBarStartPos.x, healthBarStartPos.y + 100f, healthBarStartPos.z);
 
             // Scale the first card and adjust its position to make the spawned cards fit the screen
-            originalCard.transform.localScale = new Vector3(60, 60, originalCard.transform.localScale.z);
-            originalCard.transform.localPosition = new Vector3(originalCardStartPos.x + 50f, healthBarStartPos.y - 90f, healthBarStartPos.z);
+            originalCard.transform.localScale = new Vector3(115, 115, originalCard.transform.localScale.z);
+            originalCard.transform.localPosition = new Vector3(originalCardStartPos.x + 40f, healthBarStartPos.y - 60f, healthBarStartPos.z);
         }
 
 		originalCardStartPos = originalCard.transform.position;

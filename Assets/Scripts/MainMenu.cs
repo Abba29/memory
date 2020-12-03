@@ -9,13 +9,13 @@ public class MainMenu : MonoBehaviour
     private void NewEasyGame()
     {
         PlayerPrefs.SetString("LastGameModeSelected", "Easy");
-        SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     private void NewHardGame()
     {
         PlayerPrefs.SetString("LastGameModeSelected", "Hard");
-        SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     // Print the values shown in the 'Statistiche' game screen

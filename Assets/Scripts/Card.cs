@@ -4,7 +4,7 @@ public class Card : MonoBehaviour
 {
 	
 	[SerializeField] private GameObject cardBack;
-	[SerializeField] private GameManager controller;
+	[SerializeField] private SceneManager controller;
 
 	private int _id;
 
